@@ -598,11 +598,8 @@ class VibeVoiceDemo:
             return len(speakers)
     
 
-def create_demo_interface(demo_instance: VibeVoiceDemo):
-    """Create the Gradio interface with streaming support."""
-    
-    # Custom CSS for high-end aesthetics with lighter theme
-    custom_css = """
+# Custom CSS for high-end aesthetics with lighter theme
+custom_css = """
     /* Modern light theme with gradients */
     .gradio-container {
         background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -799,15 +796,12 @@ def create_demo_interface(demo_instance: VibeVoiceDemo):
         background: linear-gradient(135deg, #475569 0%, #334155 100%);
     }
     """
-    
+
+def create_demo_interface(demo_instance: VibeVoiceDemo):
+    """Create the Gradio interface with streaming support."""
+
     with gr.Blocks(
         title="VibeVoice - AI Podcast Generator",
-        css=custom_css,
-        theme=gr.themes.Soft(
-            primary_hue="blue",
-            secondary_hue="purple",
-            neutral_hue="slate",
-        )
     ) as interface:
         
         # Header
@@ -1231,6 +1225,12 @@ def main():
             # server_port=args.port,
             server_name="0.0.0.0" if args.share else "0.0.0.0",
             show_error=True,
+            theme=gr.themes.Soft(
+                primary_hue="blue",
+                secondary_hue="purple",
+                neutral_hue="slate",
+            ),
+            css=custom_css,
         )
     except KeyboardInterrupt:
         print("\n🛑 Shutting down gracefully...")
