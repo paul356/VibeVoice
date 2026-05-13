@@ -63,7 +63,8 @@ class VibeVoiceDemo:
             attn_impl_primary = "sdpa"
         elif self.device == "cuda":
             load_dtype = torch.bfloat16
-            attn_impl_primary = "flash_attention_2"
+            major, _ = torch.cuda.get_device_capability()
+            attn_impl_primary = "flash_attention_2" if major >= 8 else "sdpa"
         else:
             load_dtype = torch.float32
             attn_impl_primary = "sdpa"
