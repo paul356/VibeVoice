@@ -953,7 +953,6 @@ Or paste text directly and it will auto-assign speakers.""",
                     elem_classes="audio-output complete-audio-section",
                     streaming=False,  # Non-streaming mode
                     autoplay=False,
-                    show_download_button=True,  # Explicitly show download button
                     visible=False  # Initially hidden, shown when audio is ready
                 )
                 
